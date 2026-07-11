@@ -1,0 +1,60 @@
+{
+  "description": "Controller-policy ablation rollouts driven by the fixed local SB3 PPO Pong policy.",
+  "protocol": {
+    "episodes": 5,
+    "horizon": 512,
+    "policy": "artifacts/external_policies/sb3_pong/sb3_ppo_pong_policy_state.pt",
+    "policy_format": "sb3_atari",
+    "seeds": [0, 1, 2, 3, 4]
+  },
+  "notes": [
+    "DIAMOND offline lambda=0 is omitted because the expected local checkpoint was not present when generating this bundle.",
+    "DIAMOND nonzero CGSReg uses the mask1+mask3 checkpoint."
+  ],
+  "targets": [
+    {
+      "project": "dreamer",
+      "recommended_weight": "0.01",
+      "conditions": [
+        {"condition": "exp_repro", "root": "artifacts/controller_policy_ablation/sb3_ppo_pong_h512_rollouts/dreamer", "model": "size200m_repro", "status": "available"},
+        {"condition": "w0", "root": "artifacts/controller_policy_ablation/sb3_ppo_pong_h512_rollouts/dreamer", "model": "size200m_w0", "status": "available"},
+        {"condition": "w_recommended", "root": "artifacts/controller_policy_ablation/sb3_ppo_pong_h512_rollouts/dreamer", "model": "size200m_w001", "weight": "0.01", "status": "available"}
+      ]
+    },
+    {
+      "project": "diamond",
+      "recommended_weight": "0.01",
+      "conditions": [
+        {"condition": "exp_repro", "root": "artifacts/controller_policy_ablation/sb3_ppo_pong_h512_rollouts/diamond_exp_repro", "model": "diamond_repro", "status": "available"},
+        {"condition": "w_recommended", "root": "artifacts/controller_policy_ablation/sb3_ppo_pong_h512_rollouts/diamond", "model": "diamond_mask13_w0p01", "weight": "0.01", "mask_setting": "mask1+mask3", "status": "available"}
+      ]
+    },
+    {
+      "project": "twister",
+      "recommended_weight": "1.0",
+      "conditions": [
+        {"condition": "exp_repro", "root": "artifacts/controller_policy_ablation/sb3_ppo_pong_h512_rollouts/twister", "model": "dyna_twister_repro", "status": "available"},
+        {"condition": "w0", "root": "artifacts/controller_policy_ablation/sb3_ppo_pong_h512_rollouts/twister", "model": "offline_diamond_w0", "status": "available"},
+        {"condition": "w_recommended", "root": "artifacts/controller_policy_ablation/sb3_ppo_pong_h512_rollouts/twister", "model": "offline_diamond_w1", "weight": "1.0", "status": "available"}
+      ]
+    },
+    {
+      "project": "simulus",
+      "recommended_weight": "0.01",
+      "conditions": [
+        {"condition": "exp_repro", "root": "artifacts/controller_policy_ablation/sb3_ppo_pong_h512_rollouts/simulus_repro", "model": "simulus_repro", "status": "available"},
+        {"condition": "w0", "root": "artifacts/controller_policy_ablation/sb3_ppo_pong_h512_rollouts/simulus_offline", "model": "offline_static_diamond_w0", "status": "available"},
+        {"condition": "w_recommended", "root": "artifacts/controller_policy_ablation/sb3_ppo_pong_h512_rollouts/simulus_offline", "model": "offline_static_diamond_w0p01", "weight": "0.01", "status": "available"}
+      ]
+    },
+    {
+      "project": "storm",
+      "recommended_weight": "0.01",
+      "conditions": [
+        {"condition": "exp_repro", "root": "artifacts/controller_policy_ablation/sb3_ppo_pong_h512_rollouts/storm_repro", "model": "storm_repro", "status": "available"},
+        {"condition": "w0", "root": "artifacts/controller_policy_ablation/sb3_ppo_pong_h512_rollouts/storm_w0", "model": "storm_w0", "status": "available"},
+        {"condition": "w_recommended", "root": "artifacts/controller_policy_ablation/sb3_ppo_pong_h512_rollouts/storm_w0p01", "model": "storm_w0p01", "weight": "0.01", "status": "available"}
+      ]
+    }
+  ]
+}

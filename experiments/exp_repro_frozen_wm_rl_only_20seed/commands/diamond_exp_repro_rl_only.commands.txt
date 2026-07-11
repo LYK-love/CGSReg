@@ -1,0 +1,4 @@
+# Run from $HOME/projects/diamond.
+# Exp-repro WM frozen; train RL policy only.
+
+PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True WANDB_PROJECT=rl-in-pixel-env-diamond WANDB_ENTITY=ssl-lab WANDB_MODE=online DIAMOND_PIXEL_RL_WANDB_ENABLED=1 DIAMOND_PIXEL_RL_WM_CHECKPOINT=checkpoints/reproduce_pong/agent_versions/agent_epoch_01000.pt DIAMOND_PIXEL_RL_AC_UPDATES=20000 DIAMOND_PIXEL_RL_ENVS=64 DIAMOND_PIXEL_RL_BACKUP_EVERY=15 DIAMOND_PIXEL_RL_WM_HORIZON=512 DIAMOND_PIXEL_RL_WM_INITIAL_SOURCE=real DIAMOND_PIXEL_RL_LOG_EVERY=1000 DIAMOND_PIXEL_RL_EVAL_REAL_EVERY=2000 DIAMOND_PIXEL_RL_EVAL_REAL_VIDEO_EVERY=10000 DIAMOND_PIXEL_RL_SAVE_EVERY=2000 DIAMOND_PIXEL_RL_CHECKPOINT_KEEP=10 DIAMOND_PIXEL_RL_RESUME=False conda run --no-capture-output -n diamond bash scripts/experiments/pong_pixel_rl_in_diamond_env.sh wm checkpoints/reproduce_pong/agent_versions/agent_epoch_01000.pt exp_repro_rl_only_diamond_h512_ac20k checkpoints/Pong.pt checkpoints/Pong.pt

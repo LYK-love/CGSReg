@@ -1,0 +1,6 @@
+# Fixed-policy closed-loop rollout for DIAMOND mask1+mask3 w0.01.
+# Run from the CGSReg checkout with tiny-exp-scheduler or directly.
+#
+# Protocol: 5 episodes, seeds 0..4, horizon 512, deterministic real-env AC policy.
+
+conda run --no-capture-output -n diamond python scripts/eval/torch_play_rollout_videos.py --wm diamond:diamond_mask13_w0p01=/scorpio/home/luyukuan/projects/diamond/outputs/pong_wm_offline_base_denoiser_only_fixed_sr_mask1_mask3/pong_wm_offline_size13m_b32_fixedsr_mask1_mask3_spatial_0p01_denoiser_only/checkpoints/agent_versions/agent_epoch_01000.pt --policy real_env_ac20k_backup15=/scorpio/home/luyukuan/projects/rl-in-pixel-env/runs/backend=real_ac20k_envs64_backup15_cuda3/pixel_rl_ckpt/latest.pt --bootstrap-dataset /data/luyukuan/projects/diamond-assets/datasets/pong/test --output-dir artifacts/diamond_mask13_real_policy_h512_rollouts/diamond --env-id PongNoFrameskip-v4 --episodes 5 --horizon 512 --seed 0 --device cuda --fps 15 --size 256 --wm-initial-source dataset --extra denoiser_ckpt=/scorpio/home/luyukuan/projects/diamond/outputs/pong_wm_offline_base_denoiser_only_fixed_sr_mask1_mask3/pong_wm_offline_size13m_b32_fixedsr_mask1_mask3_spatial_0p01_denoiser_only/checkpoints/agent_versions/agent_epoch_01000.pt --extra rew_end_model_ckpt=/scorpio/home/luyukuan/projects/diamond/checkpoints/Pong.pt

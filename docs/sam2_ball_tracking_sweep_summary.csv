@@ -1,0 +1,16 @@
+horizon,name,sam2_present_frames,real_present_frames,present_ratio,missing_rate,first_present_t,last_present_t,ball_l2_rmse,ball_l2_mean,ball_vx_sign_accuracy,ball_vy_sign_accuracy,first_divergence_t,output_dir
+8,size200m_repro,0,8,0.0,1.0,,,nan,nan,,,,eval_outputs/pong_sam2_ball_concept_sweep_h8_chunk0start8_sam2remote_20260530
+8,size400m_w0,0,8,0.0,1.0,,,nan,nan,,,,eval_outputs/pong_sam2_ball_concept_sweep_h8_chunk0start8_sam2remote_20260530
+8,size400m_w0p01,2,8,0.25,0.75,6,7,12.693167397721894,12.692718387062495,1.0,1.0,6,eval_outputs/pong_sam2_ball_concept_sweep_h8_chunk0start8_sam2remote_20260530
+16,size200m_repro,0,16,0.0,1.0,,,nan,nan,,,,eval_outputs/pong_sam2_ball_concept_sweep_h16_chunk0start8_sam2remote_20260530
+16,size400m_w0,0,16,0.0,1.0,,,nan,nan,,,,eval_outputs/pong_sam2_ball_concept_sweep_h16_chunk0start8_sam2remote_20260530
+16,size400m_w0p01,10,16,0.625,0.375,6,15,12.751862903540477,12.719100777346267,0.8888888888888888,0.8888888888888888,6,eval_outputs/pong_sam2_ball_concept_sweep_h16_chunk0start8_sam2remote_20260530
+24,size200m_repro,0,24,0.0,1.0,,,nan,nan,,,,eval_outputs/pong_sam2_ball_concept_sweep_h24_chunk0start8_sam2remote_20260530
+24,size400m_w0,0,24,0.0,1.0,,,nan,nan,,,,eval_outputs/pong_sam2_ball_concept_sweep_h24_chunk0start8_sam2remote_20260530
+24,size400m_w0p01,18,24,0.75,0.25,6,23,13.128075513448408,12.427333486610364,0.5882352941176471,0.5882352941176471,6,eval_outputs/pong_sam2_ball_concept_sweep_h24_chunk0start8_sam2remote_20260530
+32,size200m_repro,0,32,0.0,1.0,,,nan,nan,,,,eval_outputs/pong_sam2_ball_concept_sweep_h32_chunk0start8_sam2remote_20260530
+32,size400m_w0,0,32,0.0,1.0,,,nan,nan,,,,eval_outputs/pong_sam2_ball_concept_sweep_h32_chunk0start8_sam2remote_20260530
+32,size400m_w0p01,26,32,0.8125,0.1875,6,31,15.168580877184844,14.441163197525869,0.72,0.72,6,eval_outputs/pong_sam2_ball_concept_sweep_h32_chunk0start8_sam2remote_20260530
+48,size200m_repro,0,48,0.0,1.0,,,nan,nan,,,,eval_outputs/pong_sam2_ball_concept_sweep_h48_chunk0start8_sam2remote_20260530
+48,size400m_w0,9,48,0.1875,0.8125,39,47,15.387187133040323,15.34488299405161,1.0,1.0,39,eval_outputs/pong_sam2_ball_concept_sweep_h48_chunk0start8_sam2remote_20260530
+48,size400m_w0p01,42,48,0.875,0.125,6,47,15.663591269238104,15.094399414629148,0.8292682926829268,0.6585365853658537,6,eval_outputs/pong_sam2_ball_concept_sweep_h48_chunk0start8_sam2remote_20260530

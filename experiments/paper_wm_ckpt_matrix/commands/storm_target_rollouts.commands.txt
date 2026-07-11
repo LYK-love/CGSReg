@@ -1,0 +1,60 @@
+# Run from the CGSReg checkout. These commands fill the missing STORM
+# rows in experiments/paper_wm_ckpt_matrix/target_rollouts.json.
+#
+# If the exp-repro checkpoint has not been restored yet:
+#   cd "$HOME/projects/oc-storm" &&
+#   tar --zstd -xf oc_storm_completed_pong_atari100k_reproduction_wm_ckpt_20260531T172700Z.tar.zst
+
+source "$HOME/miniconda3/etc/profile.d/conda.sh"
+set -e
+
+cd "$HOME/projects/CGSReg" &&
+conda activate oc-storm &&
+CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES:-0} python scripts/eval/torch_play_rollout_videos.py \
+  --wm storm:storm_w0="$HOME/projects/oc-storm/runs/pong_wm_reg_image_sweep/logdir/pong_wm_reg_base_mask1_spatial_0_temporal_1/ckpt/latest_agent.pth" \
+  --policy real_env_ac20k_backup15="$HOME/projects/rl-in-pixel-env/runs/backend=real_ac20k_envs64_backup15_cuda3/pixel_rl_ckpt/latest.pt" \
+  --output-dir artifacts/storm_real_policy_h512_rollouts \
+  --env-id PongNoFrameskip-v4 \
+  --episodes 5 \
+  --horizon 512 \
+  --seed 0 \
+  --device cuda \
+  --fps 15 \
+  --size 256 \
+  --wm-initial-source real \
+  --extra config_path="$HOME/projects/oc-storm/runs/pong_wm_reg_image_sweep/logdir/pong_wm_reg_base_mask1_spatial_0_temporal_1/config.py" \
+  --extra wm_env_name=PongNoFrameskip-v4
+
+cd "$HOME/projects/CGSReg" &&
+conda activate oc-storm &&
+CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES:-0} python scripts/eval/torch_play_rollout_videos.py \
+  --wm storm:storm_w0p01="$HOME/projects/oc-storm/runs/pong_wm_reg_image_sweep/logdir/pong_wm_reg_base_mask1_spatial_0p01_temporal_1/ckpt/latest_agent.pth" \
+  --policy real_env_ac20k_backup15="$HOME/projects/rl-in-pixel-env/runs/backend=real_ac20k_envs64_backup15_cuda3/pixel_rl_ckpt/latest.pt" \
+  --output-dir artifacts/storm_real_policy_h512_rollouts \
+  --env-id PongNoFrameskip-v4 \
+  --episodes 5 \
+  --horizon 512 \
+  --seed 0 \
+  --device cuda \
+  --fps 15 \
+  --size 256 \
+  --wm-initial-source real \
+  --extra config_path="$HOME/projects/oc-storm/runs/pong_wm_reg_image_sweep/logdir/pong_wm_reg_base_mask1_spatial_0p01_temporal_1/config.py" \
+  --extra wm_env_name=PongNoFrameskip-v4
+
+cd "$HOME/projects/CGSReg" &&
+conda activate oc-storm &&
+CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES:-0} python scripts/eval/torch_play_rollout_videos.py \
+  --wm storm:storm_repro="$HOME/projects/oc-storm/runs/pong_atari100k_reproduction/logdir/Pong-STORM-base/ckpt/latest_agent.pth" \
+  --policy real_env_ac20k_backup15="$HOME/projects/rl-in-pixel-env/runs/backend=real_ac20k_envs64_backup15_cuda3/pixel_rl_ckpt/latest.pt" \
+  --output-dir artifacts/storm_real_policy_h512_rollouts \
+  --env-id PongNoFrameskip-v4 \
+  --episodes 5 \
+  --horizon 512 \
+  --seed 0 \
+  --device cuda \
+  --fps 15 \
+  --size 256 \
+  --wm-initial-source real \
+  --extra config_path="$HOME/projects/oc-storm/runs/pong_atari100k_reproduction/logdir/Pong-STORM-base/config.py" \
+  --extra wm_env_name=PongNoFrameskip-v4

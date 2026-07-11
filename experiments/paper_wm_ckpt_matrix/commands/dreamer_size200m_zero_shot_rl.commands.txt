@@ -1,0 +1,12 @@
+# DreamerV3 size200m offline-WM zero-shot RL for the main paper.
+# These runs keep the Dreamer model size fixed to size200m:
+#   exp-repro: already trained/evaluated separately
+#   offline w=0: train here
+#   offline w=0.01: train here
+#
+# Protocol: 20k AC updates, 64 envs, backup_every=15, horizon=512,
+# reward quantization threshold 0.1. Run with tiny-exp-scheduler from any cwd.
+
+bash -lc 'source "$HOME/miniconda3/etc/profile.d/conda.sh" && conda activate dreamer && cd "$HOME/projects/dreamerv3-reborn" && DREAMERV3_RUNS_ROOT="$HOME/projects/dreamerv3-runs" DREAMERV3_AC_UPDATES=20000 DREAMERV3_SAVE_EVERY=10000 NUM_CKPT_TO_KEEP=2 DREAMERV3_LOG_EVERY=1000 DREAMERV3_EVAL_REAL_EVERY=2000 DREAMERV3_EVAL_REAL_VIDEO_EVERY=10000 DREAMERV3_VIDEO_EVERY=10000 DREAMERV3_PIXEL_RL_ENVS=64 DREAMERV3_PIXEL_RL_FRAMEWORK=jax DREAMERV3_PIXEL_RL_RESUME=False DREAMERV3_WM_HORIZON=512 DREAMERV3_WM_REWARD_QUANTIZE_THRESHOLD=0.1 DREAMERV3_WANDB_PROJECT=rl-in-pixel-env-dreamer DREAMERV3_LOGGER_NAME=main_size200m_offline_w0_ac20k_h512_rewq0p1 bash scripts/experiments/pong_pixel_rl_in_env.sh wm "$HOME/projects/dreamerv3-runs/pong_wm_reg_sweep/logdir/pong_wm_reg_size200m_mask1_spatial_0_temporal_1/ckpt/20260601T031422F628106" "$HOME/projects/dreamerv3-runs/pong_pixel_rl_in_env/logdir/main_size200m_offline_w0_ac20k_h512_rewq0p1"'
+
+bash -lc 'source "$HOME/miniconda3/etc/profile.d/conda.sh" && conda activate dreamer && cd "$HOME/projects/dreamerv3-reborn" && DREAMERV3_RUNS_ROOT="$HOME/projects/dreamerv3-runs" DREAMERV3_AC_UPDATES=20000 DREAMERV3_SAVE_EVERY=10000 NUM_CKPT_TO_KEEP=2 DREAMERV3_LOG_EVERY=1000 DREAMERV3_EVAL_REAL_EVERY=2000 DREAMERV3_EVAL_REAL_VIDEO_EVERY=10000 DREAMERV3_VIDEO_EVERY=10000 DREAMERV3_PIXEL_RL_ENVS=64 DREAMERV3_PIXEL_RL_FRAMEWORK=jax DREAMERV3_PIXEL_RL_RESUME=False DREAMERV3_WM_HORIZON=512 DREAMERV3_WM_REWARD_QUANTIZE_THRESHOLD=0.1 DREAMERV3_WANDB_PROJECT=rl-in-pixel-env-dreamer DREAMERV3_LOGGER_NAME=main_size200m_offline_w0p01_ac20k_h512_rewq0p1 bash scripts/experiments/pong_pixel_rl_in_env.sh wm "$HOME/projects/dreamerv3-runs/pong_wm_reg_sweep/logdir/pong_wm_reg_size200m_mask1_spatial_0p01_temporal_1/ckpt/20260601T031013F757364" "$HOME/projects/dreamerv3-runs/pong_pixel_rl_in_env/logdir/main_size200m_offline_w0p01_ac20k_h512_rewq0p1"'

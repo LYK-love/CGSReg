@@ -1,0 +1,4 @@
+# Run from $HOME/projects/oc-storm.
+# Exp-repro WM frozen; train RL policy only.
+
+CONDA_ENV_NAME=oc-storm WANDB_ENABLED=1 WANDB_PROJECT=rl-in-pixel-env-storm WANDB_ENTITY=ssl-lab WANDB_MODE=online STORM_SIZE_CONFIG=base PIXEL_RL_CONFIG_PATH=configs/atari_visual.py PIXEL_RL_AC_UPDATES=20000 PIXEL_RL_ENVS=64 PIXEL_RL_BACKUP_EVERY=15 PIXEL_RL_LOG_EVERY=1000 PIXEL_RL_SAVE_EVERY=10000 PIXEL_RL_WM_VIDEO_EVERY=10000 PIXEL_RL_WM_HORIZON=512 PIXEL_RL_WM_DISABLE_KV_CACHE=True PIXEL_RL_WM_RESPECT_TERMINAL=True PIXEL_RL_WM_INITIAL_SOURCE=real PIXEL_RL_WM_REWARD_QUANTIZE_THRESHOLD=0.1 PIXEL_RL_EVAL_REAL_EVERY=2000 PIXEL_RL_EVAL_REAL_VIDEO_EVERY=10000 PIXEL_RL_EVAL_REAL_EPS=5 PIXEL_RL_RESUME=False bash scripts/experiments/pong_pixel_rl_in_env.sh wm "$HOME/projects/oc-storm/runs/pong_atari100k_reproduction/logdir/Pong-STORM-base/ckpt/latest_agent.pth" pong_pixel_rl_in_env/logdir/exp_repro_rl_only_storm_h512_ac20k_rewq0p1

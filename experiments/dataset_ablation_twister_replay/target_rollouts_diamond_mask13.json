@@ -1,0 +1,30 @@
+{
+  "description": "DIAMOND mask1+mask3 w0.01 rollout diagnostic target, following the same fixed real-env controller protocol as the TW exp-repro replay SR diagnostics.",
+  "protocol": {
+    "episodes": 5,
+    "horizon": 512,
+    "reset_seeds": [0, 1, 2, 3, 4],
+    "policy": "real_env_ac20k_backup15",
+    "policy_type": "deterministic real-env AC policy",
+    "weights": ["0.01"],
+    "mask_weights": {
+      "mask1": 1.0,
+      "mask2": 0.0,
+      "mask3": 1.0
+    }
+  },
+  "targets": [
+    {
+      "project": "diamond",
+      "conditions": [
+        {
+          "condition": "mask13_w0p01",
+          "weight": "0.01",
+          "root": "artifacts/diamond_mask13_real_policy_h512_rollouts/diamond",
+          "model": "diamond_mask13_w0p01",
+          "status": "completed"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "description": "Paper target matrix: for each WM project compare offline w=0, the recommended spatial weight, and the exp-repro checkpoint under the available closed-loop rollout protocol.",
+  "protocol": {
+    "episodes": 5,
+    "horizon": 512,
+    "policy": "real_env_ac20k_backup15 where available",
+    "seeds": [0, 1, 2, 3, 4]
+  },
+  "targets": [
+    {
+      "project": "dreamer",
+      "recommended_weight": "0.01",
+      "conditions": [
+        {"condition": "w0", "root": "artifacts/dreamer_all5_real_policy_h512_rollouts", "model": "size200m_w0", "status": "available"},
+        {"condition": "w_recommended", "root": "artifacts/dreamer_all5_real_policy_h512_rollouts", "model": "size200m_w001", "weight": "0.01", "status": "available"},
+        {"condition": "exp_repro", "root": "artifacts/dreamer_all5_real_policy_h512_rollouts", "model": "size200m_repro", "status": "available"}
+      ]
+    },
+    {
+      "project": "diamond",
+      "recommended_weight": "0.01",
+      "conditions": [
+        {"condition": "w0", "root": "artifacts/diamond_denoiser_w_sweep_real_policy_h512_rollouts", "model": "diamond_w0p0", "status": "available"},
+        {"condition": "w_recommended", "root": "artifacts/diamond_denoiser_w_sweep_real_policy_h512_rollouts", "model": "diamond_w0p01", "weight": "0.01", "status": "available"},
+        {"condition": "exp_repro", "root": "artifacts/torch_selected_wms_real_policy_h512_rollouts", "model": "diamond_repro", "status": "available"}
+      ]
+    },
+    {
+      "project": "simulus",
+      "recommended_weight": "0.01",
+      "conditions": [
+        {"condition": "w0", "root": "artifacts/simulus_offline_w_sweep_real_policy_h512_rollouts", "model": "offline_static_diamond_w0", "status": "available"},
+        {"condition": "w_recommended", "root": "artifacts/simulus_offline_w_sweep_real_policy_h512_rollouts", "model": "offline_static_diamond_w0p01", "weight": "0.01", "status": "available"},
+        {"condition": "exp_repro", "root": "artifacts/torch_selected_wms_real_policy_h512_rollouts", "model": "simulus_repro", "status": "available"}
+      ]
+    },
+    {
+      "project": "twister",
+      "recommended_weight": "1.0",
+      "conditions": [
+        {"condition": "w0", "root": "artifacts/twister_no_ac_cpc_w_sweep_real_policy_h512_rollouts", "model": "offline_diamond_w0", "status": "available"},
+        {"condition": "w_recommended", "root": "artifacts/twister_no_ac_cpc_w_sweep_real_policy_h512_rollouts", "model": "offline_diamond_w1", "weight": "1.0", "status": "available"},
+        {"condition": "exp_repro", "root": "artifacts/twister_no_ac_cpc_w_sweep_real_policy_h512_rollouts", "model": "dyna_twister_repro", "status": "available"}
+      ],
+      "notes": "This closed-loop rollout target keeps the rollout policy fixed to the real-env policy. The strongest zero-shot RL row in docs/zero_shot_mbrl.md uses the AC-CPC offline w=1 policy eval and should be cited separately."
+    },
+    {
+      "project": "storm",
+      "recommended_weight": "0.01",
+      "conditions": [
+        {"condition": "w0", "root": "artifacts/storm_real_policy_h512_rollouts", "model": "storm_w0", "status": "available"},
+        {"condition": "w_recommended", "root": "artifacts/storm_real_policy_h512_rollouts", "model": "storm_w0p01", "weight": "0.01", "status": "available"},
+        {"condition": "exp_repro", "root": "artifacts/storm_real_policy_h512_rollouts", "model": "storm_repro", "status": "available"}
+      ],
+      "notes": "STORM closed-loop rollout uses real reset/bootstrap, matching the oc-storm WM eval convention. oc-storm docs report w=0.01 as the most visually plausible tested spatial weight, but zero-shot transfer remains full failure."
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+# Pandaria scheduler wrapper for exp-repro frozen-WM RL-only runs.
+# Keep DIAMOND last: only four GPUs are free, and DIAMOND is the slowest job.
+# Run from any directory inside a tmux session.
+
+bash -lc 'cd "$HOME/projects/dreamerv3-reborn" && bash "$HOME/projects/CGSReg/experiments/exp_repro_frozen_wm_rl_only_20seed/commands/dreamer_exp_repro_rl_only.commands.txt"'
+bash -lc 'cd "$HOME/projects/twister" && bash "$HOME/projects/CGSReg/experiments/exp_repro_frozen_wm_rl_only_20seed/commands/twister_exp_repro_rl_only.commands.txt"'
+bash -lc 'cd "$HOME/projects/simulus" && bash "$HOME/projects/CGSReg/experiments/exp_repro_frozen_wm_rl_only_20seed/commands/simulus_exp_repro_rl_only.commands.txt"'
+bash -lc 'cd "$HOME/projects/oc-storm" && bash "$HOME/projects/CGSReg/experiments/exp_repro_frozen_wm_rl_only_20seed/commands/storm_exp_repro_rl_only.commands.txt"'
+bash -lc 'cd "$HOME/projects/diamond" && bash "$HOME/projects/CGSReg/experiments/exp_repro_frozen_wm_rl_only_20seed/commands/diamond_exp_repro_rl_only.commands.txt"'

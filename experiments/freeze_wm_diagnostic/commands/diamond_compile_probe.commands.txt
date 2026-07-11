@@ -1,0 +1,7 @@
+# DIAMOND torch.compile probe for Pandaria.
+# Purpose: verify whether training.compile_wm=True works on the target machine
+# without touching the long-running diamond-dyna-freeze-wm runs.
+# This is intentionally tiny: default 5000-step initial collect, then one
+# collect epoch with one training step per component.
+
+bash -lc 'cd "$HOME/projects/diamond" && env OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 NUMEXPR_NUM_THREADS=2 VECLIB_MAXIMUM_THREADS=2 MALLOC_ARENA_MAX=2 WANDB_MODE=disabled conda run --no-capture-output -n diamond python -u src/main.py common.devices=all common.seed=42 wandb.mode=disabled wandb.project=diamond-dyna-freeze-wm wandb.name=diamond_compile_probe collection.train.num_steps_total=5100 training.num_final_epochs=0 evaluation.should=False collection.test.num_final_episodes=1 checkpointing.save_every=1000 checkpointing.num_to_keep=1 training.compile_wm=True denoiser.training.steps_first_epoch=1 denoiser.training.steps_per_epoch=1 rew_end_model.training.steps_first_epoch=1 rew_end_model.training.steps_per_epoch=1 actor_critic.training.steps_first_epoch=1 actor_critic.training.steps_per_epoch=1 hydra.run.dir=outputs/freeze_wm_compile_probe/diamond_compile_probe'

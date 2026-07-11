@@ -1,0 +1,3 @@
+# Retry Simulus after fixing the exp-repro checkpoint curiosity-head mismatch.
+
+bash -lc 'cd "$HOME/projects/simulus" && bash "$HOME/projects/CGSReg/experiments/exp_repro_frozen_wm_rl_only_20seed/commands/simulus_exp_repro_rl_only.commands.txt"'

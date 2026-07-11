@@ -1,0 +1,20 @@
+[submodule "third_party/dreamerv3-reborn"]
+	path = third_party/dreamerv3-reborn
+	url = https://github.com/LYK-love/CGSReg-dreamerv3-reborn.git
+	branch = main
+[submodule "third_party/diamond"]
+	path = third_party/diamond
+	url = https://github.com/LYK-love/CGSReg-diamond.git
+	branch = main
+[submodule "third_party/twister"]
+	path = third_party/twister
+	url = https://github.com/LYK-love/CGSReg-twister.git
+	branch = main
+[submodule "third_party/simulus"]
+	path = third_party/simulus
+	url = https://github.com/LYK-love/CGSReg-simulus.git
+	branch = main
+[submodule "third_party/oc-storm"]
+	path = third_party/oc-storm
+	url = https://github.com/LYK-love/CGSReg-oc-storm.git
+	branch = main

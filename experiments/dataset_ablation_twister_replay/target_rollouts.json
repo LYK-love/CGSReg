@@ -1,0 +1,58 @@
+{
+  "description": "TWISTER exp-repro replay dataset ablation rollout matrix. Each WM was trained offline on the TWISTER exp-repro replay dataset with SAM2 mask1 supervision, then rolled out under the same fixed real-env controller policy.",
+  "protocol": {
+    "episodes": 5,
+    "horizon": 512,
+    "reset_seeds": [0, 1, 2, 3, 4],
+    "policy": "real_env_ac20k_backup15",
+    "policy_type": "deterministic real-env AC policy",
+    "weights": ["0", "0.01", "0.1", "1.0"]
+  },
+  "targets": [
+    {
+      "project": "dreamer",
+      "conditions": [
+        {"condition": "w0", "weight": "0", "root": "artifacts/twexp_replay_sr_real_policy_h512_rollouts/dreamer", "model": "twexp_dreamer_w0", "status": "pending"},
+        {"condition": "w0p01", "weight": "0.01", "root": "artifacts/twexp_replay_sr_real_policy_h512_rollouts/dreamer", "model": "twexp_dreamer_w0p01", "status": "pending"},
+        {"condition": "w0p1", "weight": "0.1", "root": "artifacts/twexp_replay_sr_real_policy_h512_rollouts/dreamer", "model": "twexp_dreamer_w0p1", "status": "pending"},
+        {"condition": "w1", "weight": "1.0", "root": "artifacts/twexp_replay_sr_real_policy_h512_rollouts/dreamer", "model": "twexp_dreamer_w1", "status": "pending"}
+      ]
+    },
+    {
+      "project": "diamond",
+      "conditions": [
+        {"condition": "w0", "weight": "0", "root": "artifacts/twexp_replay_sr_real_policy_h512_rollouts/diamond", "model": "twexp_diamond_w0", "status": "pending"},
+        {"condition": "w0p01", "weight": "0.01", "root": "artifacts/twexp_replay_sr_real_policy_h512_rollouts/diamond", "model": "twexp_diamond_w0p01", "status": "pending"},
+        {"condition": "w0p1", "weight": "0.1", "root": "artifacts/twexp_replay_sr_real_policy_h512_rollouts/diamond", "model": "twexp_diamond_w0p1", "status": "pending"},
+        {"condition": "w1", "weight": "1.0", "root": "artifacts/twexp_replay_sr_real_policy_h512_rollouts/diamond", "model": "twexp_diamond_w1", "status": "pending"}
+      ]
+    },
+    {
+      "project": "simulus",
+      "conditions": [
+        {"condition": "w0", "weight": "0", "root": "artifacts/twexp_replay_sr_real_policy_h512_rollouts/simulus", "model": "twexp_simulus_w0", "status": "pending"},
+        {"condition": "w0p01", "weight": "0.01", "root": "artifacts/twexp_replay_sr_real_policy_h512_rollouts/simulus", "model": "twexp_simulus_w0p01", "status": "pending"},
+        {"condition": "w0p1", "weight": "0.1", "root": "artifacts/twexp_replay_sr_real_policy_h512_rollouts/simulus", "model": "twexp_simulus_w0p1", "status": "pending"},
+        {"condition": "w1", "weight": "1.0", "root": "artifacts/twexp_replay_sr_real_policy_h512_rollouts/simulus", "model": "twexp_simulus_w1", "status": "pending"}
+      ]
+    },
+    {
+      "project": "twister",
+      "conditions": [
+        {"condition": "w0", "weight": "0", "root": "artifacts/twexp_replay_sr_real_policy_h512_rollouts/twister", "model": "twexp_twister_w0", "status": "pending"},
+        {"condition": "w0p01", "weight": "0.01", "root": "artifacts/twexp_replay_sr_real_policy_h512_rollouts/twister", "model": "twexp_twister_w0p01", "status": "pending"},
+        {"condition": "w0p1", "weight": "0.1", "root": "artifacts/twexp_replay_sr_real_policy_h512_rollouts/twister", "model": "twexp_twister_w0p1", "status": "pending"},
+        {"condition": "w1", "weight": "1.0", "root": "artifacts/twexp_replay_sr_real_policy_h512_rollouts/twister", "model": "twexp_twister_w1", "status": "pending"}
+      ]
+    },
+    {
+      "project": "storm",
+      "conditions": [
+        {"condition": "w0", "weight": "0", "root": "artifacts/twexp_replay_sr_real_policy_h512_rollouts/storm", "model": "twexp_storm_w0", "status": "pending"},
+        {"condition": "w0p01", "weight": "0.01", "root": "artifacts/twexp_replay_sr_real_policy_h512_rollouts/storm", "model": "twexp_storm_w0p01", "status": "pending"},
+        {"condition": "w0p1", "weight": "0.1", "root": "artifacts/twexp_replay_sr_real_policy_h512_rollouts/storm", "model": "twexp_storm_w0p1", "status": "pending"},
+        {"condition": "w1", "weight": "1.0", "root": "artifacts/twexp_replay_sr_real_policy_h512_rollouts/storm", "model": "twexp_storm_w1", "status": "pending"}
+      ]
+    }
+  ]
+}

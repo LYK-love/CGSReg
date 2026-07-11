@@ -1,0 +1,8 @@
+# DreamerV3 DIAMOND-replay lambda search.
+# Each job: offline WM if missing -> 20k AC zero-shot RL -> 20-seed real-ALE eval.
+bash -lc 'cd "$HOME/projects/CGSReg" && bash experiments/dreamer_lambda_search/run_one.sh size200m 0.001'
+bash -lc 'cd "$HOME/projects/CGSReg" && bash experiments/dreamer_lambda_search/run_one.sh size200m 0.1'
+bash -lc 'cd "$HOME/projects/CGSReg" && bash experiments/dreamer_lambda_search/run_one.sh size200m 1.0'
+bash -lc 'cd "$HOME/projects/CGSReg" && bash experiments/dreamer_lambda_search/run_one.sh size400m 0.001'
+bash -lc 'cd "$HOME/projects/CGSReg" && bash experiments/dreamer_lambda_search/run_one.sh size400m 0.1'
+bash -lc 'cd "$HOME/projects/CGSReg" && bash experiments/dreamer_lambda_search/run_one.sh size400m 1.0'

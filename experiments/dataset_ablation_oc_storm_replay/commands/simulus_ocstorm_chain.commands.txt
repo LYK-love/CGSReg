@@ -1,0 +1,7 @@
+# Simulus OC-STORM replay dataset ablation.
+# One complete chain per lambda: offline WM -> zero-shot RL -> 20-seed real eval.
+
+bash -lc 'cd "$HOME/projects/CGSReg" && bash experiments/dataset_ablation_oc_storm_replay/run_simulus_chain.sh w0 0.0'
+bash -lc 'cd "$HOME/projects/CGSReg" && bash experiments/dataset_ablation_oc_storm_replay/run_simulus_chain.sh w0p01 0.01'
+bash -lc 'cd "$HOME/projects/CGSReg" && bash experiments/dataset_ablation_oc_storm_replay/run_simulus_chain.sh w0p1 0.1'
+bash -lc 'cd "$HOME/projects/CGSReg" && bash experiments/dataset_ablation_oc_storm_replay/run_simulus_chain.sh w1 1.0'

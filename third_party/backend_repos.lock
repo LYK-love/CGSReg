@@ -1,0 +1,6 @@
+# name|public_url|branch|commit|path|source_repo|source_commit|role
+dreamerv3-reborn|https://github.com/LYK-love/CGSReg-dreamerv3-reborn.git|main|bfd8730ba30811851d494a1382a297d32f3ca6f3|third_party/dreamerv3-reborn|private:dreamerv3-reborn|358afb75e0b25475f5eb9bff163f9b7e8e470204|DreamerV3 backend
+diamond|https://github.com/LYK-love/CGSReg-diamond.git|main|950ccdbd9f39f6c0c831cadeef022f6939975900|third_party/diamond|private:diamond|a6fa190b52ba59e3740f42148dfc9f767fa4b6a2|DIAMOND backend
+twister|https://github.com/LYK-love/CGSReg-twister.git|main|c93c42ccbff419f804f80b3b32a0561dbb4a541a|third_party/twister|private:twister|b17694ca2860f8714ff7309f058446c444c504cb|TWISTER backend
+simulus|https://github.com/LYK-love/CGSReg-simulus.git|main|16a3461ed3cb0b59b6d2b0b1abdceea827a55880|third_party/simulus|private:simulus|d5efbeb8ac605c023142ea012084f6cdd49ab5fe|Simulus backend
+oc-storm|https://github.com/LYK-love/CGSReg-oc-storm.git|main|641ad56475d157adf3ae5be251aebbece8665ccd|third_party/oc-storm|private:oc-storm|01e497558a63d2f89de0589b05d1bf106dbd4232|STORM and OC-STORM backend

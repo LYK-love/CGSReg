@@ -1,0 +1,4 @@
+# Run from $HOME/projects/dreamerv3-reborn.
+# Exp-repro WM frozen; train RL policy only.
+
+DREAMERV3_RUNS_ROOT="$HOME/projects/dreamerv3-runs" DREAMERV3_AC_UPDATES=20000 DREAMERV3_SAVE_EVERY=10000 NUM_CKPT_TO_KEEP=4 DREAMERV3_LOG_EVERY=1000 DREAMERV3_EVAL_REAL_EVERY=2000 DREAMERV3_EVAL_REAL_VIDEO_EVERY=10000 DREAMERV3_VIDEO_EVERY=10000 DREAMERV3_PIXEL_RL_ENVS=64 DREAMERV3_PIXEL_RL_FRAMEWORK=jax DREAMERV3_PIXEL_RL_RESUME=False DREAMERV3_WM_HORIZON=512 DREAMERV3_WM_REWARD_QUANTIZE_THRESHOLD=0.1 DREAMERV3_WANDB_PROJECT=rl-in-pixel-env-dreamer DREAMERV3_LOGGER_NAME=exp_repro_rl_only_dreamer_h512_ac20k_rewq0p1 bash scripts/experiments/pong_pixel_rl_in_env.sh wm "$HOME/projects/dreamerv3-reborn/runs/pong_atari100k_reproduction/logdir/size200m/ckpt/latest" "$HOME/projects/dreamerv3-runs/pong_pixel_rl_in_env/logdir/exp_repro_rl_only_dreamer_h512_ac20k_rewq0p1"

@@ -1,0 +1,9 @@
+# TWISTER fixed-seed real-ALE eval for TWISTER-replay zero-shot policies.
+# Run from $HOME/projects/CGSReg.
+# This matches the main-paper local eval protocol:
+#   episodes=5, reset_seeds=0,1,2,3,4, deterministic policy.
+#
+# Set TWEXP_POLICY_ARCHIVE_ROOT to the extracted policy archive root, i.e. the
+# directory that contains twister/.
+
+bash -lc 'source "$HOME/miniconda3/etc/profile.d/conda.sh" && cd "$HOME/projects/CGSReg" && conda activate twister && ROOT="${TWEXP_POLICY_ARCHIVE_ROOT:-$HOME/projects/CGSReg/artifacts/twexp_replay_sr_zero_shot_rl_policy_ckpts_20260624/twexp_replay_sr_zero_shot_rl_policy_ckpts_20260624}" && P="$ROOT/twister/twister_offline_replay_ac_cpc_zsrl_policies_w0_w0p01_w0p1_w1_20260618T164338Z/policies" && OUT="${TWEXP_FIXED_EVAL_OUT:-artifacts/dataset_ablation_twister_replay/fixed_real_eval/twister}" && python scripts/eval/evaluate_torch_pong_real_policies.py --episodes 20 --reset-seeds 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19 --deterministic-policy --device cuda --output-dir "$OUT" --policy "twister_twexp_w0=$P/wm_zsrl_replay_w0.pt" --policy "twister_twexp_w0p01=$P/wm_zsrl_replay_w0p01.pt" --policy "twister_twexp_w0p1=$P/wm_zsrl_replay_w0p1.pt" --policy "twister_twexp_w1=$P/wm_zsrl_replay_w1.pt"'

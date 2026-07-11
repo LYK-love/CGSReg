@@ -1,0 +1,4 @@
+# Run from $HOME/projects/simulus.
+# Exp-repro WM frozen; train RL policy only.
+
+bash -lc 'cd "$HOME/projects/simulus" && env PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True PYTHONPATH="$PWD/src" WANDB_ENTITY=ssl-lab WANDB_MODE=online conda run --no-capture-output -n simulus python -u -m src.pixel_rl.train --backend wm --wm-checkpoint checkpoints/Pong.pt --wm-initial-source real --wm-enable-curiosity True --wm-reward-quantize-threshold 0.5 --run-name exp_repro_rl_only_simulus_h512_ac20k_rewq0p5 --ac-updates 20000 --envs 64 --backup-every 15 --wm-horizon 512 --eval-real-every 2000 --eval-real-video-every 10000 --eval-real-eps 5 --save-every 5000 --checkpoint-keep 4 --resume False --wandb-enabled True --wandb-project rl-in-pixel-env-simulus --wandb-entity ssl-lab --wandb-mode online'

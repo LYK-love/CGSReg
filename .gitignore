@@ -1,0 +1,19 @@
+__pycache__/
+*.pyc
+.DS_Store
+
+build/
+scheduler_logs/
+experiments/**/scheduler_logs/
+
+# Large/local artifacts should be archived externally and represented by
+# manifests or checksums.
+artifacts/**/*.pt
+artifacts/**/*.pth
+artifacts/**/*.ckpt
+artifacts/**/*.npz
+artifacts/**/*.mp4
+artifacts/**/*.tar
+artifacts/**/*.tar.gz
+artifacts/**/*.tar.zst
+artifacts/**/*.zip
